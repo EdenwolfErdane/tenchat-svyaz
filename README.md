@@ -1,11 +1,23 @@
+<div align="center">
+
 # Связь
 
+</div>
+<div align="center">
+
 **Креативная кампания для TenChat: как один контакт запускает карьерную траекторию**
+
+</div>
+
+<div align="center">
 
 ![Campaign](https://img.shields.io/badge/Кампания-СВЯЗЬ-00D4FF?style=for-the-badge&labelColor=0A1628)
 ![Brand](https://img.shields.io/badge/TenChat-2026-FF9E3D?style=for-the-badge&labelColor=0A1628)
 ![Status](https://img.shields.io/badge/Статус-Готово_к_публикации-4ADE80?style=for-the-badge&labelColor=0A1628)
 ![License](https://img.shields.io/badge/Лицензия-MIT-8B95A8?style=for-the-badge&labelColor=0A1628)
+
+</div>
+
 
 ---
 
