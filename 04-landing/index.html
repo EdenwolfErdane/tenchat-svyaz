@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СВЯЗЬ — кампания TenChat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A1628;
+  --surface: #142235;
+  --surface-2: #1E2F47;
+  --text: #F5F5F0;
+  --text-muted: #8B95A8;
+  --signal: #00D4FF;
+  --meeting: #FF9E3D;
+  --success: #4ADE80;
+  --border: rgba(245, 245, 240, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0A1628 0%, #142235 100%);
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('../02-creative/assets/scene_zero_point.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45;
+  filter: brightness(0.7) saturate(1.2);
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10, 22, 40, 0.5) 0%, rgba(10, 22, 40, 0.95) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 32px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--signal);
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero h1 .accent { color: var(--signal); }
+.hero h1 .accent-amber { color: var(--meeting); }
+
+.hero p {
+  font-size: 20px;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 32px;
+  background: var(--signal);
+  color: var(--bg);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4);
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 212, 255, 0.3);
+}
+
+.cta-btn .arrow { font-size: 20px; }
+
+.hero-social {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.hero-social strong { color: var(--text); font-family: 'JetBrains Mono', monospace; }
+
+/* SECTION: STORY */
+.story-section {
+  padding: 120px 0;
+  background: var(--bg);
+  position: relative;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--signal);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.timeline-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.timeline-card:hover {
+  border-color: var(--signal);
+  transform: translateY(-4px);
+}
+
+.timeline-card .img {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.timeline-card .img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 22, 40, 0.6) 100%);
+}
+
+.timeline-card .body {
+  padding: 24px;
+}
+
+.timeline-card .step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--meeting);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.timeline-card h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.timeline-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* QUOTE */
+.quote-section {
+  padding: 120px 0;
+  background: var(--surface);
+  text-align: center;
+}
+
+.quote-section blockquote {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.quote-section blockquote::before {
+  content: '"';
+  font-family: 'Manrope', sans-serif;
+  font-size: 120px;
+  color: var(--meeting);
+  position: absolute;
+  top: -40px;
+  left: -50px;
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.quote-section cite {
+  font-style: normal;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.quote-section cite strong { color: var(--text); }
+
+/* CALCULATOR */
+.calc-section {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.calc-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.calc-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.calc-controls label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.calc-controls select {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.calc-result {
+  background: var(--surface-2);
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.calc-result .stat {
+  text-align: center;
+}
+
+.calc-result .stat .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--signal);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.calc-result .stat .label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* CASES */
+.cases-section {
+  padding: 120px 0;
+  background: var(--surface);
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.case-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.case-card:hover {
+  border-color: var(--meeting);
+}
+
+.case-card .age-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--meeting);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.case-card h4 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.case-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.case-card .case-link {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--signal);
+  text-decoration: none;
+}
+
+/* FINAL CTA */
+.final-cta {
+  padding: 160px 0;
+  background: linear-gradient(135deg, #0A1628 0%, #1E2F47 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  background-image: url('../02-creative/assets/key_visual_network.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  filter: blur(2px);
+}
+
+.final-cta-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 32px; }
+
+.final-cta h2 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.final-cta h2 .signal { color: var(--signal); }
+
+.final-cta p {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--bg);
+  padding: 64px 0 32px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.footer-brand {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.footer-brand .dot { color: var(--signal); }
+
+.footer-brand p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .hero-content { padding: 0 20px; }
+  .calc-box { padding: 32px 24px; }
+  .quote-section blockquote::before { display: none; }
+}
+
+/* SWIPE DEMO */
+.swipe-section {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.swipe-container {
+  max-width: 360px;
+  margin: 48px auto 0;
+  position: relative;
+  height: 460px;
+}
+
+.swipe-card {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  cursor: grab;
+  transition: transform 0.3s ease, opacity 0.3s;
+  user-select: none;
+}
+
+.swipe-card.dragging { transition: none; cursor: grabbing; }
+
+.swipe-card .avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--signal), var(--meeting));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+
+.swipe-card h4 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.swipe-card .role {
+  font-size: 14px;
+  color: var(--signal);
+  margin-bottom: 16px;
+}
+
+.swipe-card .tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.swipe-card .tag {
+  padding: 4px 10px;
+  background: var(--surface-2);
+  border-radius: 100px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.swipe-card .stats {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.swipe-actions {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.swipe-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.swipe-btn.yes:hover { background: var(--success); color: var(--bg); border-color: var(--success); }
+.swipe-btn.no:hover { background: #EF4444; color: var(--bg); border-color: #EF4444; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">КАМПАНИЯ TENCHAT • СВЯЗЬ</div>
+    <h1>Один контакт —<br><span class="accent">целая</span> <span class="accent-amber">траектория.</span></h1>
+    <p>Деловая соцсеть TenChat показывает, как одно знакомство меняет карьеру. От первого сообщения до собственного агентства за 6 месяцев.</p>
+    <a href="#start" class="cta-btn">Запусти свою траекторию <span class="arrow">→</span></a>
+    <div class="hero-social">
+      <strong>7 500 000</strong> компаний и экспертов уже в TenChat
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="container">
+    <div class="section-label">ИСТОРИЯ ДИНЫ</div>
+    <h2 class="section-title">От 200 откликов без ответа<br>до агентства за 6 месяцев.</h2>
+    <p class="section-subtitle">Дина, 26 лет, junior frontend-разработчица из Самары. Переехала в Москву, искала первую работу. Вот что произошло.</p>
+
+    <div class="timeline">
+      <div class="timeline-card">
+        <div class="img" style="background-image: url('../02-creative/assets/scene_zero_point.png');"></div>
+        <div class="body">
+          <div class="step">ДЕНЬ 0 • 23:47</div>
+          <h3>Точка ноль</h3>
+          <p>200 откликов на hh, 0 ответов. Ночью листает ленту «Зевс» в TenChat.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="img" style="background: var(--surface-2); display: flex; align-items: center; justify-content: center;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--signal); padding: 24px; text-align: left;">
+            <div style="color: var(--text-muted); margin-bottom: 8px;">Дина • 23:47</div>
+            Если бы фронтенд был в команде<br>
+            с первого дня и говорил «нет»<br>
+            дизайнерским решениям —<br>
+            продукт бы выжил.
+          </div>
+        </div>
+        <div class="body">
+          <div class="step">ДЕНЬ 0 • 23:47</div>
+          <h3>4 строки</h3>
+          <p>Комментарий под постом Тимура, ex-Yandex PM, о продукте, который умер из-за слабого фронтенда.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="img" style="background: var(--surface-2); display: flex; align-items: center; justify-content: center;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--meeting); padding: 24px; text-align: left;">
+            <div style="color: var(--text-muted); margin-bottom: 8px;">Тимур ответил вам</div>
+            «Привет. Можешь созвониться<br>завтра в 14:00?»<br><br>
+            <span style="color: var(--text-muted); font-size: 12px;">2 часа назад</span>
+          </div>
+        </div>
+        <div class="body">
+          <div class="step">ДЕНЬ 0 • 02:14</div>
+          <h3>Ответ через 2 часа</h3>
+          <p>Тимур отвечает в личку. Прямое сообщение в TenChat — без подтверждения дружбы.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="img" style="background-image: url('../02-creative/assets/scene_meeting.png');"></div>
+        <div class="body">
+          <div class="step">ДЕНЬ 14</div>
+          <h3>Первая встреча</h3>
+          <p>Коворкинг. Два ноутбука. Чашка кофе. Тимур присылает ТЗ на pet-проект.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="img" style="background-image: url('../02-creative/assets/scene_team.png');"></div>
+        <div class="body">
+          <div class="step">МЕСЯЦ 4</div>
+          <h3>Команда из 4</h3>
+          <p>Первые клиенты. Backend и дизайнер — оба найдены через TenChat.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card">
+        <div class="img" style="background-image: url('../02-creative/assets/hero_dina.png');"></div>
+        <div class="body">
+          <div class="step">МЕСЯЦ 6</div>
+          <h3>Агентство «Сигнал»</h3>
+          <p>7 человек в команде. Выручка 1,8 млн ₽/мес. 8 клиентов. Дина — CTO.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <blockquote>
+      Я не была талантливее других.<br>
+      Я просто написала 4 строки под постом<br>
+      человека, которого не знала.
+    </blockquote>
+    <cite>— <strong>Дина</strong>, CTO агентства «Сигнал»</cite>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-section" id="start">
+  <div class="container">
+    <div class="section-label">КАЛЬКУЛЯТОР НЕТВОРКИНГА</div>
+    <h2 class="section-title">Сколько стоит твой следующий контакт?</h2>
+    <p class="section-subtitle">Средняя стоимость привлечения клиента через классическую воронку — от 5 000 ₽. Через TenChat — бесплатно. Посчитай свой потенциал.</p>
+
+    <div class="calc-box">
+      <div class="calc-controls">
+        <div>
+          <label>Профессия</label>
+          <select id="calcProf">
+            <option value="frontend">Frontend-разработчик</option>
+            <option value="backend">Backend-разработчик</option>
+            <option value="design">UX/UI-дизайнер</option>
+            <option value="product">Product manager</option>
+            <option value="marketing">Маркетолог</option>
+            <option value="sales">Sales / B2B</option>
+          </select>
+        </div>
+        <div>
+          <label>Город</label>
+          <select id="calcCity">
+            <option value="msk">Москва</option>
+            <option value="spb">Санкт-Петербург</option>
+            <option value="region">Регион</option>
+          </select>
+        </div>
+        <div>
+          <label>Опыт</label>
+          <select id="calcExp">
+            <option value="junior">Junior (0-2 года)</option>
+            <option value="middle">Middle (2-5 лет)</option>
+            <option value="senior">Senior (5+ лет)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="stat">
+          <div class="num" id="resultContacts">12</div>
+          <div class="label">полезных контактов за 6 мес.</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="resultClients">3</div>
+          <div class="label">клиентов/проектов</div>
+        </div>
+        <div class="stat">
+          <div class="num" id="resultMoney">180K</div>
+          <div class="label">доп. доход, ₽/мес.</div>
+        </div>
+        <div class="stat">
+          <div class="num">0 ₽</div>
+          <div class="label">стоимость одного контакта</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWIPE DEMO -->
+<section class="swipe-section">
+  <div class="container">
+    <div class="section-label">БИЗНЕС.ТИНДЕР В TENCHAT</div>
+    <h2 class="section-title">Свайпай. Находи.<br>Меняй траекторию.</h2>
+    <p class="section-subtitle">Попробуй механику деловых знакомств TenChat прямо здесь. Реальные профили — после регистрации.</p>
+
+    <div class="swipe-container">
+      <div class="swipe-card" id="swipeCard">
+        <div class="avatar">Т</div>
+        <h4>Тимур К.</h4>
+        <div class="role">Product Manager • ex-Yandex</div>
+        <div class="tags">
+          <span class="tag">Product</span>
+          <span class="tag">B2B SaaS</span>
+          <span class="tag">Москва</span>
+        </div>
+        <div style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">«Помогаю продуктам не умирать. Ищу крепкого frontend-партнёра для запуска агентства.»</div>
+        <div class="stats">
+          <span>7500 подписчиков</span>
+          <span>•</span>
+          <span>42 публикации</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="swipe-actions">
+      <button class="swipe-btn no" onclick="swipe('no')">✕</button>
+      <button class="swipe-btn yes" onclick="swipe('yes')">✓</button>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases-section">
+  <div class="container">
+    <div class="section-label">ДИА — НЕ ОДНА</div>
+    <h2 class="section-title">Три реальных кейса<br>из TenChat.</h2>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="age-tag">45 ЛЕТ • ТУЛА</div>
+        <h4>Игорь, производственник</h4>
+        <p>Через TenChat нашёл подрядчика на Ямал. Вышел на новый рынок, +38% к выручке за 8 месяцев.</p>
+        <a href="#" class="case-link">Читать кейс →</a>
+      </div>
+
+      <div class="case-card">
+        <div class="age-tag">29 ЛЕТ • МОСКВА</div>
+        <h4>Аня, UX-дизайнер</h4>
+        <p>Получила оффер в Авито после публикации кейса в ленте «Зевс». Без единого отклика на hh.</p>
+        <a href="#" class="case-link">Читать кейс →</a>
+      </div>
+
+      <div class="case-card">
+        <div class="age-tag">36 ЛЕТ • СПБ</div>
+        <h4>Сергей, B2B-консультант</h4>
+        <p>Привлёк 2 корпоративных клиентов через «Бизнес.Тиндер». Контракты на 2,4 млн ₽.</p>
+        <a href="#" class="case-link">Читать кейс →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-content">
+    <div class="section-label" style="text-align: center;">ТВОЯ ТРАЕКТОРИЯ</div>
+    <h2>Начни с одного <span class="signal">сообщения.</span></h2>
+    <p>Бесплатно. Без рекламы. Без спама. Прямые сообщения без подтверждения дружбы.</p>
+    <a href="#" class="cta-btn">Создать профиль в TenChat за 5 минут <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        TenChat<span class="dot">.</span>
+        <p>Связь, которая становится делом.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">О платформе</a>
+        <a href="#">Бренд</a>
+        <a href="#">Помощь</a>
+        <a href="#">Контакты</a>
+        <a href="#">VK</a>
+        <a href="#">Telegram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 TenChat. Кампании «СВЯЗЬ» — концепция для участия в креативном конкурсе. Все визуалы сгенерированы ИИ.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Калькулятор
+const calcData = {
+  frontend: { msk: { jun: [12, 2, 80000], mid: [25, 5, 180000], sen: [40, 10, 350000] }, spb: { jun: [10, 2, 70000], mid: [22, 4, 150000], sen: [35, 8, 280000] }, region: { jun: [7, 1, 50000], mid: [15, 3, 100000], sen: [25, 6, 180000] } },
+  backend: { msk: { jun: [14, 3, 90000], mid: [28, 6, 200000], sen: [45, 12, 380000] }, spb: { jun: [12, 2, 75000], mid: [25, 5, 170000], sen: [38, 9, 300000] }, region: { jun: [8, 2, 55000], mid: [16, 3, 110000], sen: [28, 7, 200000] } },
+  design: { msk: { jun: [11, 2, 70000], mid: [22, 4, 150000], sen: [35, 8, 280000] }, spb: { jun: [9, 2, 60000], mid: [20, 4, 130000], sen: [30, 7, 240000] }, region: { jun: [6, 1, 45000], mid: [14, 3, 90000], sen: [22, 5, 160000] } },
+  product: { msk: { jun: [13, 3, 100000], mid: [26, 6, 220000], sen: [42, 11, 400000] }, spb: { jun: [11, 2, 80000], mid: [23, 5, 180000], sen: [36, 9, 320000] }, region: { jun: [7, 1, 55000], mid: [15, 3, 120000], sen: [25, 6, 220000] } },
+  marketing: { msk: { jun: [10, 2, 65000], mid: [20, 4, 140000], sen: [32, 7, 260000] }, spb: { jun: [8, 2, 55000], mid: [18, 4, 120000], sen: [28, 6, 220000] }, region: { jun: [6, 1, 40000], mid: [13, 3, 85000], sen: [20, 5, 150000] } },
+  sales: { msk: { jun: [15, 4, 120000], mid: [30, 7, 250000], sen: [48, 13, 450000] }, spb: { jun: [13, 3, 100000], mid: [26, 6, 210000], sen: [40, 10, 360000] }, region: { jun: [9, 2, 70000], mid: [18, 4, 140000], sen: [30, 7, 250000] } }
+};
+
+function updateCalc() {
+  const prof = document.getElementById('calcProf').value;
+  const city = document.getElementById('calcCity').value;
+  const exp = document.getElementById('calcExp').value;
+  const data = calcData[prof][city][exp];
+  document.getElementById('resultContacts').textContent = data[0];
+  document.getElementById('resultClients').textContent = data[1];
+  document.getElementById('resultMoney').textContent = data[2] >= 1000000 ? (data[2]/1000000).toFixed(1) + 'M' : Math.round(data[2]/1000) + 'K';
+}
+
+['calcProf', 'calcCity', 'calcExp'].forEach(id => {
+  document.getElementById(id).addEventListener('change', updateCalc);
+});
+
+updateCalc();
+
+// Свайп демо
+let swipeOffset = 0;
+let isDragging = false;
+let startX = 0;
+const card = document.getElementById('swipeCard');
+
+card.addEventListener('mousedown', startDrag);
+card.addEventListener('touchstart', startDrag);
+
+function startDrag(e) {
+  isDragging = true;
+  startX = e.touches ? e.touches[0].clientX : e.clientX;
+  card.classList.add('dragging');
+  document.addEventListener('mousemove', drag);
+  document.addEventListener('touchmove', drag);
+  document.addEventListener('mouseup', endDrag);
+  document.addEventListener('touchend', endDrag);
+}
+
+function drag(e) {
+  if (!isDragging) return;
+  const x = e.touches ? e.touches[0].clientX : e.clientX;
+  swipeOffset = x - startX;
+  card.style.transform = `translateX(${swipeOffset}px) rotate(${swipeOffset/20}deg)`;
+  card.style.opacity = 1 - Math.abs(swipeOffset)/500;
+}
+
+function endDrag() {
+  isDragging = false;
+  card.classList.remove('dragging');
+  document.removeEventListener('mousemove', drag);
+  document.removeEventListener('touchmove', drag);
+  document.removeEventListener('mouseup', endDrag);
+  document.removeEventListener('touchend', endDrag);
+
+  if (Math.abs(swipeOffset) > 100) {
+    card.style.transform = `translateX(${swipeOffset > 0 ? 500 : -500}px) rotate(${swipeOffset/10}deg)`;
+    card.style.opacity = 0;
+    setTimeout(() => {
+      card.style.transform = '';
+      card.style.opacity = '';
+    }, 400);
+  } else {
+    card.style.transform = '';
+    card.style.opacity = '';
+  }
+  swipeOffset = 0;
+}
+
+function swipe(dir) {
+  card.style.transform = `translateX(${dir === 'yes' ? 500 : -500}px) rotate(${dir === 'yes' ? 25 : -25}deg)`;
+  card.style.opacity = 0;
+  setTimeout(() => {
+    card.style.transform = '';
+    card.style.opacity = '';
+  }, 400);
+}
+</script>
+
+</body>
+</html>

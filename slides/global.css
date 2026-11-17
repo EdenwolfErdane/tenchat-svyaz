@@ -1,0 +1,240 @@
+/* CINEMATIC NETWORKING — TENCHAT CAMPAIGN "СВЯЗЬ" */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #0A1628;
+  --surface: #142235;
+  --surface-2: #1E2F47;
+  --text: #F5F5F0;
+  --text-muted: #8B95A8;
+  --signal: #00D4FF;
+  --meeting: #FF9E3D;
+  --success: #4ADE80;
+  --border: rgba(245, 245, 240, 0.08);
+
+  --font-heading: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-num: 'JetBrains Mono', monospace;
+
+  --fs-display: 96px;
+  --fs-h1: 64px;
+  --fs-h2: 44px;
+  --fs-h3: 28px;
+  --fs-body: 18px;
+  --fs-small: 14px;
+  --fs-micro: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); }
+
+.slide {
+  width: 1280px;
+  min-height: 720px;
+  max-height: 720px;
+  background: var(--bg);
+  padding: 64px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide.light { background: var(--surface); }
+.slide.dark-2 { background: linear-gradient(135deg, #0A1628 0%, #142235 100%); }
+
+/* Decorative dots pattern */
+.dots-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 400px; height: 400px;
+  background-image: radial-gradient(circle, var(--signal) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Page number */
+.page-num {
+  position: absolute;
+  bottom: 32px; right: 64px;
+  font-family: var(--font-num);
+  font-size: var(--fs-micro);
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.page-num .current { color: var(--signal); }
+
+/* Brand mark */
+.brand-mark {
+  position: absolute;
+  top: 32px; right: 64px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.brand-mark .dot { color: var(--signal); }
+
+/* Section label */
+.section-label {
+  font-family: var(--font-num);
+  font-size: 12px;
+  color: var(--signal);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Headlines */
+.h-display {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--fs-display);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.h-1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.h-2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.h-3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.body-muted {
+  color: var(--text-muted);
+}
+
+.numeric {
+  font-family: var(--font-num);
+  font-weight: 700;
+  color: var(--signal);
+}
+
+.accent { color: var(--signal); }
+.amber { color: var(--meeting); }
+
+/* CTA Button (decorative) */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  background: var(--signal);
+  color: var(--bg);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.card-accent {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+/* Stat block */
+.stat-num {
+  font-family: var(--font-num);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--signal);
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Timeline */
+.timeline-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, var(--signal) 0%, var(--meeting) 100%);
+  opacity: 0.4;
+}
+
+/* Image utilities */
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.img-gradient::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(10, 22, 40, 0.9) 100%);
+  border-radius: 12px;
+}
+
+/* Bullet list */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.bullet-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--signal);
+  font-weight: 700;
+}
+
+/* Grid */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.hidden { display: none; }
